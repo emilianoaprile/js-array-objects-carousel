@@ -36,6 +36,7 @@ console.log(images);
 const caroselloDOMElement = document.querySelector('.carosello');
 console.log(caroselloDOMElement);
 
+// Creo il carosello
 for (let i = 0; i < images.length; i++) {
 
     console.log(i);
@@ -49,6 +50,20 @@ for (let i = 0; i < images.length; i++) {
     imgWrapperDOMElement.classList.add('img-wrapper');
     caroselloDOMElement.appendChild(imgWrapperDOMElement);
 
+    // creo tag img, gli do classe carosello-img e lo appendo a img-wrapper
+    const imgDOMElment = document.createElement('img');
+    console.log(imgDOMElment);
+    imgDOMElment.classList.add('carosello-img');
+    imgWrapperDOMElement.appendChild(imgDOMElment);
+
+    // creo tag paragrafo, gli do classe img-text e lo appendo a img-wrapper
+    const textImgDOMElement = document.createElement('p');
+    console.log(textImgDOMElement);
+    textImgDOMElement.classList.add('img-text');
+    imgWrapperDOMElement.appendChild(textImgDOMElement);
+
+    // inerisco img dentro il wrapper
+    imgDOMElment.src = caroselloImages.image;
 
     console.log('Name:', caroselloImages.image);
 
@@ -56,3 +71,18 @@ for (let i = 0; i < images.length; i++) {
 
     console.log('Photo:', caroselloImages.text);
 }
+
+const imageCarouselElements = document.querySelectorAll('.img-wrapper');
+
+let imageCarouselActualIndex = 0;
+
+imageCarouselElements[imageCarouselActualIndex].classList.add('active');
+
+document.querySelector('.btn-right').addEventListener('click', function() {
+    imageCarouselElements[imageCarouselActualIndex].classList.remove('active');
+    imageCarouselActualIndex++;
+    if (imageCarouselActualIndex >= images.length) {
+        imageCarouselActualIndex = 0;
+    }
+    imageCarouselElements[imageCarouselActualIndex].classList.add('active');
+});
