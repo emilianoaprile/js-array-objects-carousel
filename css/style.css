@@ -1,0 +1,52 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 40px;
+}
+.carosello {
+    aspect-ratio: 21/9;
+    margin: 0 auto;
+    position: relative;
+}
+
+.carosello .image {
+    display: none;
+}
+
+.carosello .active {
+    display: block;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; 
+}
+
+.btn {
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.btn-left {
+    position: absolute;
+    left: 30px;
+    bottom: 50%;
+    transform: translate(-50%);
+}
+
+.btn-right {
+    position: absolute;
+    right: 30px;
+    bottom: 50%;
+    transform: translate(-50%);
+}
