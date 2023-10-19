@@ -1,4 +1,4 @@
-console.log('Carosello Oggetti')
+console.log('Carosello')
 
 const images = [
 	{
@@ -30,11 +30,9 @@ const images = [
 
 console.log(images);
 
-
-
-// recupero elemento div carosello dal DOM
-const caroselloDOMElement = document.querySelector('.carosello');
-console.log(caroselloDOMElement);
+// recupero elemento div container dal DOM
+const wrapperDOMElement = document.querySelector('.wrapper');
+console.log(wrapperDOMElement);
 
 // Creo il carosello
 for (let i = 0; i < images.length; i++) {
@@ -44,23 +42,12 @@ for (let i = 0; i < images.length; i++) {
     const caroselloImages = images[i];
     console.log(caroselloImages);
 
-    // creo elemento div, gli do classe img-wrapper e lo appendo al div carosello
-    const imgWrapperDOMElement = document.createElement('div');
-    console.log(imgWrapperDOMElement);
-    imgWrapperDOMElement.classList.add('img-wrapper');
-    caroselloDOMElement.appendChild(imgWrapperDOMElement);
-
-    // creo tag img, gli do classe carosello-img e lo appendo a img-wrapper
+    // creo struttura html inserendo images dentro a wrapper
     const imgDOMElment = document.createElement('img');
     console.log(imgDOMElment);
-    imgDOMElment.classList.add('carosello-img');
-    imgWrapperDOMElement.appendChild(imgDOMElment);
+    imgDOMElment.classList.add('img-lg');
+    wrapperDOMElement.appendChild(imgDOMElment);
 
-    // creo tag paragrafo, gli do classe img-text e lo appendo a img-wrapper
-    const textImgDOMElement = document.createElement('p');
-    console.log(textImgDOMElement);
-    textImgDOMElement.classList.add('img-text');
-    imgWrapperDOMElement.appendChild(textImgDOMElement);
 
     // inerisco img dentro il wrapper
     imgDOMElment.src = caroselloImages.image;
@@ -69,41 +56,61 @@ for (let i = 0; i < images.length; i++) {
 
     console.log('Title:', caroselloImages.title);
 
-    console.log('Text:', caroselloImages.text);
+    console.log('Photo:', caroselloImages.text);
 }
 
-const imageCarouselElements = document.querySelectorAll('.img-wrapper');
+
+
+const imageCarouselElements = document.querySelectorAll('.img-lg');
+const thumbImagesDOMElements = document.querySelectorAll('.img-sm');
+console.log(thumbImagesDOMElements)
 
 let imageCarouselActualIndex = 0;
+let imageThumbCurrentIndex = 0;
 
 imageCarouselElements[imageCarouselActualIndex].classList.add('active');
 
-// btn-right
+thumbImagesDOMElements[imageThumbCurrentIndex].classList.add('border-active')
 
-document.querySelector('.btn-right').addEventListener('click', function() {
+
+// btn-down
+
+document.querySelector('.btn-down').addEventListener('click', function() {
     imageCarouselElements[imageCarouselActualIndex].classList.remove('active');
+    thumbImagesDOMElements[imageThumbCurrentIndex].classList.remove('border-active');
 
     imageCarouselActualIndex++;
+    imageThumbCurrentIndex++;
 
     if (imageCarouselActualIndex >= images.length) {
         imageCarouselActualIndex = 0;
+        imageThumbCurrentIndex = 0;
     }
-
+    
+    
     imageCarouselElements[imageCarouselActualIndex].classList.add('active');
+    thumbImagesDOMElements[imageThumbCurrentIndex].classList.add('border-active');
+
 });
 
-// btn-left
+// btn-up
 
-document.querySelector('.btn-left').addEventListener('click', function() {
+document.querySelector('.btn-up').addEventListener('click', function() {
 
     imageCarouselElements[imageCarouselActualIndex].classList.remove('active');
+    thumbImagesDOMElements[imageThumbCurrentIndex].classList.remove('border-active');
+
 
     
-    if (imageCarouselActualIndex === 0) {
-        imageCarouselActualIndex = images.length;
+    if (imageCarouselActualIndex === 0 && imageThumbCurrentIndex === 0) {
+        imageCarouselActualIndex = images.length;  
+        imageThumbCurrentIndex = thumbImagesDOMElements.length;
     }
 
     imageCarouselActualIndex--;
+    imageThumbCurrentIndex--;
     
     imageCarouselElements[imageCarouselActualIndex].classList.add('active');
+    thumbImagesDOMElements[imageThumbCurrentIndex].classList.add('border-active');
+
 });

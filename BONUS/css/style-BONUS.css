@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 1000px;
+    margin: 0 auto;
+    aspect-ratio: 21/10;
+    display: flex;
+
+}
+
+.wrapper {
+    flex-basis: 70%;
+}
+
+.img-lg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    /* padding: 5px; */
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.4);
+    display: none;
+    
+}
+
+.img-lg.active {
+    display: block;
+}
+
+
+.wrapper-thumb {
+    flex-basis: 30%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.wrapper-thumb::after {
+    content: '';
+    position: absolute;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.wrapper-thumb:hover::after {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.thumb-images {
+    height: calc(100% / 5);
+    padding: 5px;
+}
+
+.img-sm {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.4);
+}
+
+.img-sm.border-active {
+    border: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+.btn {
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btn-up {
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    transform: translate(-50%);
+}
+
+.btn-down {
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translate(-50%);
+}
+
+
+
+
+
+
+
+
+
+/* .container {
+    max-width: 900px;
+    aspect-ratio: 21/9;
+    margin: 0 auto;
+    position: relative;
+    border: 2px solid greenyellow;
+    display: flex;
+}
+
+.wrapper {
+    max-width: 900px;
+    aspect-ratio: 21/9;
+    margin: 0 auto;
+    position: relative;
+    border: 2px solid greenyellow;
+}
+
+.wrapper-thumb {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper .img-lg {
+    width: 70%;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: center; 
+    display: block; */
