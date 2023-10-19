@@ -78,11 +78,32 @@ let imageCarouselActualIndex = 0;
 
 imageCarouselElements[imageCarouselActualIndex].classList.add('active');
 
+// btn-right
+
 document.querySelector('.btn-right').addEventListener('click', function() {
     imageCarouselElements[imageCarouselActualIndex].classList.remove('active');
+
     imageCarouselActualIndex++;
+
     if (imageCarouselActualIndex >= images.length) {
         imageCarouselActualIndex = 0;
     }
+
+    imageCarouselElements[imageCarouselActualIndex].classList.add('active');
+});
+
+// btn-left
+
+document.querySelector('.btn-left').addEventListener('click', function() {
+
+    imageCarouselElements[imageCarouselActualIndex].classList.remove('active');
+
+    
+    if (imageCarouselActualIndex === 0) {
+        imageCarouselActualIndex = images.length;
+    }
+
+    imageCarouselActualIndex--;
+    
     imageCarouselElements[imageCarouselActualIndex].classList.add('active');
 });
